@@ -1,0 +1,222 @@
+
+:root {
+  --fondo: #f3f4f6;
+  --tarjeta: #ffffff;
+  --texto: #1f2937;
+  --texto-suave: #6b7280;
+  --borde: #e5e7eb;
+  --principal: #0f766e;        /* verde azulado */
+  --principal-claro: #ccfbf1;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--texto);
+  background: var(--fondo);
+}
+
+header {
+  padding: 18px 40px;
+  background: var(--tarjeta);
+  border-bottom: 1px solid var(--borde);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--principal);
+}
+
+/*DISTRIBUCION*/
+.contenedor {
+  display: flex;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px;
+  align-items: flex-start;
+}
+
+
+.productos,
+.resumen {
+  background: var(--tarjeta);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.productos {
+  flex: 3;
+  padding: 8px 20px;
+  overflow-x: auto;
+}
+
+.resumen {
+  flex: 1;
+  min-width: 260px;
+  padding: 24px;
+  position: sticky;  
+  top: 20px;
+}
+
+/*TABLA*/
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--texto-suave);
+  padding: 14px 8px;
+  border-bottom: 1px solid var(--borde);
+}
+
+td {
+  padding: 18px 8px;
+  border-bottom: 1px solid var(--borde);
+  font-variant-numeric: tabular-nums;  
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: #fafafa;
+}
+
+td strong {
+  font-size: 1.05rem;
+}
+
+td small {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: var(--texto-suave);
+}
+
+.subtotal {
+  font-weight: 600;
+}
+
+/* CANTIDAD + PRECIO + TOTAL */
+td:not(:first-child) {
+  white-space: nowrap;
+}
+
+/*BOTONCITOS*/
+button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: var(--principal-claro);
+  color: var(--principal);
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+button:hover {
+  background: var(--principal);
+  color: #fff;
+}
+
+.cantidad {
+  display: inline-block;
+  width: 36px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/*RESUMEN*/
+.resumen h2 {
+  margin: 0 0 16px;
+  font-size: 1.2rem;
+}
+
+#resumen-productos {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+}
+
+/* CARRITO VACIO */
+#resumen-productos:empty::before {
+  content: "Tu carrito está vacío";
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+#resumen-productos li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 0.9rem;
+  border-bottom: 1px dashed var(--borde);
+}
+
+.linea-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding-top: 16px;
+  border-top: 2px solid var(--texto);
+  font-weight: bold;
+}
+
+#total {
+  font-size: 1.4rem;
+  color: var(--principal);
+  font-variant-numeric: tabular-nums;
+}
+
+/* PA MOVILES */
+@media (max-width: 700px) {
+  header {
+    padding: 16px 20px;
+  }
+
+  .contenedor {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+  }
+
+  .resumen {
+    position: static;
+    min-width: 0;
+  }
+
+  .productos {
+    padding: 4px 10px;
+  }
+
+  th, td {
+    padding: 12px 4px;
+    font-size: 0.85rem;
+  }
+
+  button {
+    width: 26px;
+    height: 26px;
+  }
+
+  .cantidad {
+    width: 26px;
+  }
+}
